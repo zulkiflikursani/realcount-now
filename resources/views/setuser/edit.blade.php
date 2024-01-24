@@ -17,9 +17,11 @@
                 </div>
                 <div class="card-body">
 
-                    <form action="" method="POST" class="mt-6 space-y-6">
+
+                    <form action="{{route('setuser.update',['id'=>$id])}}" method="POST" class="mt-6 space-y-6">
                         @csrf
                         @method('put')
+
 
 
                         <input type="text" name='company' value="{{Auth::user()->company}}" readonly hidden />

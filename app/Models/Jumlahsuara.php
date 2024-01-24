@@ -12,6 +12,7 @@ class Jumlahsuara extends Model
     protected $fillable = [
         "kode_calon",
         "kode_anggota",
+        "kode_lokasi",
         "company",
         "jumlah_suara",
     ];

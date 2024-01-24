@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Real count') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -23,7 +23,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'RealCount') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -59,44 +59,55 @@
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <ul class="list-unstyled px-3 ">
-                                    @if(Auth::user()->level < 1) <li class="">
-                                        <a href="{{route('calon.index')}}">Paslon</a>
-                        </li>
-                        <li class="">
-                            <a href="{{route('lokasi.index')}}">Daerah</a>
-                        </li>
-                        <li>
-                            <a href="{{route('register.listuser')}}">List User</a>
-                        </li>
-                        @endif
+                                    @if(Auth::user()->level == 1)
+                                    <li>
+                                        <a class="dropdown-item" href="{{route('company.index')}}">Klien</a>
+                                    </li>
+                                    <li class="">
+                                        <a class="dropdown-item" href="{{route('calon.index')}}">Paslon</a>
+                                    </li>
+                                    <li class="">
+                                        <a class="dropdown-item" href="{{route('lokasi.index')}}">Daerah</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{route('register.listuser')}}">List User</a>
+                                    </li>
+                                    @elseif(Auth::user()->level==2)
+                                    <li class="">
+                                        <a class="dropdown-item" href="{{route('calon.index')}}">Paslon</a>
+                                    </li>
+                                    <li class="">
+                                        <a class="dropdown-item" href="{{route('lokasi.index')}}">Daerah</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{route('register.listuser')}}">List User</a>
+                                    </li>
+                                    @endif
 
-                        @if(Auth::user()->level == 1)
-                        <li>
-                            <a href="{{route('company.index')}}">Klien</a>
-                        </li>
-                        @endif
-                        <li>
-
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
+                                            {{ __('Logout') }}
+                                        </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
-                </div>
-                </li>
-                @endguest
-                </ul>
-            </div>
-    </div>
-    </nav>
 
-    <main class="py-4">
-        @yield('content')
-    </main>
+                        @endguest
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="py-4">
+            @yield('content')
+        </main>
     </div>
 </body>
 

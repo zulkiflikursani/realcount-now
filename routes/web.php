@@ -4,6 +4,7 @@ use App\Http\Controllers\AnggotaController;
 use App\Http\Controllers\CalonController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyContorller;
+use App\Http\Controllers\LaporanSuaraContorller;
 use App\Http\Controllers\LokasiController;
 use App\Http\Controllers\RegisterUserCompany;
 use App\Http\Controllers\SetuserController;
@@ -56,7 +57,7 @@ Route::get('/setuser', [SetuserController::class, 'index'])->name('setuser.index
 Route::get('/setuser/create', [SetuserController::class, 'create'])->name('setuser.create');
 Route::post('/setuser/insert', [SetuserController::class, 'insert'])->name('setuser.insert');
 Route::get('/setuser/{id}/edit', [SetuserController::class, 'edit'])->name('setuser.edit');
-Route::put('/setuser/{setuser}/update', [SetuserController::class, 'update'])->name('setuser.update');
+Route::put('/setuser/{id}/update', [SetuserController::class, 'update'])->name('setuser.update');
 Route::delete('/setuser/{id}/delete', [SetuserController::class, 'delete'])->name('setuser.delete');
 
 Route::get('/anggota', [AnggotaController::class, 'index'])->name('anggota.index');
@@ -65,6 +66,8 @@ Route::get('/anggota/create', [AnggotaController::class, 'create'])->name('anggo
 
 Route::post('/suara/insert', [AnggotaController::class, "insert"])->name('suara.insert');
 Route::delete('/suara/{id}/delete', [AnggotaController::class, "delete"])->name('suara.delete');
+
+Route::get('/laporan', [LaporanSuaraContorller::class, 'index'])->name('laporan.index');
 
 
 Auth::routes();

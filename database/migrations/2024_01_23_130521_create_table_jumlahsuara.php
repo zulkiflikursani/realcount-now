@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('kode_calon');
             $table->string('kode_anggota');
+            $table->string('kode_lokasi');
             $table->string('company');
             $table->string('jumlah_suara');
             $table->timestamps();

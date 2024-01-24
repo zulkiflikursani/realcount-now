@@ -55,7 +55,7 @@ class SetuserController extends Controller
         $users = User::where('company', Auth::user()->company)->get();
         $lokasi = Lokasi::where('company', Auth::user()->company)->get();
         $data = Setusers::where('id', $id)->get();
-        return view('setuser.edit', ['setuser' => $data, 'users' => $users, 'lokasi' => $lokasi]);
+        return view('setuser.edit', ['setuser' => $data, 'users' => $users, 'lokasi' => $lokasi, 'id' => $id]);
     }
 
     public function update(string $id, Request $request)
@@ -67,7 +67,7 @@ class SetuserController extends Controller
         ]);
 
         Setusers::where('id', $id)
-            ->udpate($data);
+            ->update($data);
         return redirect(route('setuser.index'))->with('success', 'Berhasil mengedit data');
     }
 
